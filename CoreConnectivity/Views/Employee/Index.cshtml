@@ -1,0 +1,69 @@
+﻿@model IEnumerable<CoreConnectivity.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@Html.Raw(TempData["insert"])
+@Html.Raw(TempData["update"])
+@Html.Raw(TempData["delete"])
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Add New Employee</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(ajay=>ajay.Eid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mobileno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Eid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobileno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Eid}) |
+                @Html.ActionLink("Details", "Details", new { id=item.Eid }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Eid },new{onclick="return confirm('Are you Sure you want to Delete(Y/N)?');"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
